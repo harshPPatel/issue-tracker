@@ -10,27 +10,15 @@ html
   font-weight: normal
   line-height: 1.5
   text-rendering: optimizeLegibility
-  @media (max-width: $small-breakpoints)
-    font-size: 15px
-  @media (max-width: $very-extra-small-breakpoints)
-    font-size: 14px
 
 body
   font-family: $base-font
+  // background-color: $black-color
+  padding-bottom: 100vh
 
 .container
-  max-width: $large-breakpoint
-
-.section
-  height: 100vh
-
-.overlay
-  +flex
-  z-index: 0
+  margin: 0 auto
+  max-width: 1140px
   width: 100%
-  height: 100%
-  background-color: rgba($black-color, 0.7)
-  @media (max-width: $medium-breakpoints)
-    padding: 50px 2rem
-  @media (max-width: $small-breakpoints)
-    padding: 50px 1.2rem
+
+  

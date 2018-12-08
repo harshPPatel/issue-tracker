@@ -1,0 +1,14 @@
+nav
+  .container
+    .brand
+      .logo
+        include icons/logo.html
+      p Issue Tracker
+    
+    form#searchForm
+      label(for="searchInput") Search :
+      input#searchInput(type="text" placeholder="Search here...")
+      select#searchOptionInput
+        option(value="hide") Select
+        option(value="id") ID
+        option(value="assignedTo" selected) Assigned To 

@@ -1,80 +1,54 @@
-nav.navbar
-  height: $navbar-height
-  box-shadow: $basic-box-shadow
+nav
   background-color: $white-color
-  @media (max-width: $medium-breakpoints)
-    height: auto
-    .container
-      padding: 0 2rem
-    .navbar-nav
-      margin: 2rem 0
+  box-shadow: $base-shadow
+  z-index: 99
+  height: $navbar-height
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
 
-  .navbar-brand
-    display: block!important
-    min-height: $navbar-brand-height
-    min-width: $navbar-brand-height
-    svg
-      height: $navbar-brand-height
-      width: auto
+  .container
+    height: 100%
+    +flex
+    justify-content: space-between
 
-  .nav-link
-    font-family: $sub-heading-font
-    text-transform: uppercase
-    color: $font-color!important
-    transition: all 0.15s ease
-    margin-right: 1.25rem!important
-    padding: 1.875rem 1.25rem!important
-    text-decoration: none
-    &:last-of-type
-      margin-right: 0
-    &:hover
-      opacity: 0.8
-    @media (max-width: $medium-breakpoints)
-      padding: 1rem!important
-      text-align: center
+  p,
+  form,
+  .brand,
+  .logo
+    display: inline-block
 
-  .active
-    background-color: $primary-color
-    color: $white-color!important
-    transform: scaleY(0.9)
+  .brand
+    cursor: pointer
+    height: 40px
+    +flex
+    .logo
+      height: 40px
+      width: 40px
+      svg
+        width: 100%
+    p
+      margin-left: 0.8rem
+      font-family: $heading-font
+      font-size: 1.8rem
+      font-weight: $heading-medium-weight
+      color: $primary-color
 
-.navbar-light .navbar-toggler
-  border: none
-  outline: none
-  padding: 0
-
-#toggle
-  width: 40px
-  height: 30px
-  cursor: pointer
-  transition: all 0.3s ease-out
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: space-between
-
-
-  .span
-    display: block
-    height: 5px
-    width: 100%
-    background-color: $primary-color!important
-    transition: all 0.3s ease-out
-    backface-visibility: hidden
-    margin-top: 3px
-    border-radius: 3px
-    &:first-of-type
-      margin-top: 0
-
-#toggle.on #one,
-#toggle.sticky-toggle.on #one
-  transform: rotate(45deg) translateX(6px) translateY(6px)
-
-
-#toggle.on #two,
-#toggle.sticky-toggle.on #two
-  opacity: 0
-
-#toggle.on #three,
-#toggle.sticky-toggle.on #three
-  transform: rotate(-45deg) translateX(12px) translateY(-12px)
+  form
+    label
+      font-weight: bold
+    +flex
+    input
+      height: $navbar-input-height
+      border: 2px solid $heading-color
+      border-radius: 2px
+      padding: 3px 7px
+      font-size: 12px
+      width: 150px
+      margin: 0 1rem
+      &:focus
+        box-shadow: $base-shadow
+        outline: none
+      &::placeholder
+        color: $font-color
