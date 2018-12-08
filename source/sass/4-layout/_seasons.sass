@@ -1,0 +1,71 @@
+.seasons-section#seasons
+  +section-padding
+  @media (max-width: $medium-breakpoints)
+    text-align: center
+  .col-lg-6
+    &:first-of-type
+      text-align: right
+      padding-right: 5rem
+      @media (max-width: $medium-breakpoints)
+        padding-right: 0
+        text-align: center
+      img
+        max-height: 500px
+        width: auto
+        box-shadow: $basic-box-shadow
+        @media (max-width: $medium-breakpoints)
+          max-height: 400px
+          margin-bottom: 2rem
+        @media (max-width: $small-breakpoints)
+          max-height: 350px
+        @media (max-width: $very-extra-small-breakpoints)
+          max-height: 300px
+    &:last-of-type
+      font-size: 1.25rem
+      @media (max-width: $medium-breakpoints)
+        p
+          width: 90%
+          margin: 0 auto
+      @media (max-width: $small-breakpoints)
+        font-size: 1.15rem
+  #season-tabs
+    margin-bottom: 6.25rem
+    text-align: center
+    @media (max-width: $very-extra-small-breakpoints)
+      margin-bottom: 2.25rem
+      .nav-item
+        width: 25%
+        text-align: center
+    .nav-link
+      font-size: 2rem
+      font-family: $heading-font
+      color: $heading-color
+      height: 5.625rem
+      width: 5.625rem
+      line-height: 4.375rem
+      border-radius: 5.625rem
+      border: 1px solid rgba($secondary-color, 0.3)
+      transition: all 0.3s ease
+      @media (max-width: $medium-breakpoints)
+        height: 4.625rem
+        width: 4.625rem
+        line-height: 3.375rem
+      @media (max-width: $small-breakpoints)
+        height: 3.625rem
+        width: 3.625rem
+        line-height: 2.375rem
+        font-size: 1.5rem
+      @media (max-width: $very-extra-small-breakpoints)
+        margin-right: auto
+        margin-left: auto
+        margin-bottom: 1rem
+      &.active
+        background-color: $primary-color
+        color: $white-color
+        border-color: $primary-color
+        &:hover
+          background-color: darken($primary-color, 5%)
+          // opacity: .8
+      &:hover,
+      &:visited
+        background-color: darken($white-color, 5%)

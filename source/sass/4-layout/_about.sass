@@ -1,0 +1,28 @@
+.about-section
+  +section-padding
+  .col-lg-6
+    &:first-of-type
+      text-align: center
+    &:last-of-type
+      +flex
+      @media (max-width: $medium-breakpoints)
+        text-align: center
+        p
+          width: 80%
+          margin: 0 auto
+      @media (max-width: $small-breakpoints)
+        p
+          width: 90%
+  img
+    max-height: 25rem
+    @media (max-width: $medium-breakpoints)
+      margin-bottom: 2rem
+    @media (max-width: $very-extra-small-breakpoints)
+      max-height: 275px
+
+  h3
+    text-transform: uppercase
+    margin-bottom: 1.875rem
+
+  p
+    letter-spacing: 1px

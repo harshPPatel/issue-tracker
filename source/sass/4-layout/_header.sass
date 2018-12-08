@@ -1,0 +1,37 @@
+header
+  height: calc(100vh - #{$navbar-height})
+  min-height: 800px
+  margin-top: $navbar-height
+  background: url($hero-bg) center center no-repeat
+  background-size: cover
+  color: $white-color
+  +flex
+  img
+    max-height: 475px
+    box-shadow: $basic-box-shadow
+    @media (max-width: $medium-breakpoints)
+      margin-bottom: 2rem
+      max-height: 375px
+    @media (max-width: $very-extra-small-breakpoints)
+      max-height: 275px
+
+  .col-lg-6
+    &:first-of-type
+      text-align: center
+    &:last-of-type
+      +flex
+      h3
+        letter-spacing: 1px
+        margin-bottom: 20px
+        span
+          color: $primary-color
+          text-shadow: $basic-text-shadow
+      h6
+        color: $primary-color
+        margin-bottom: 20px
+      p
+        color: $white-color
+        opacity: 0.8
+        margin-bottom: 20px
+      @media (max-width: $medium-breakpoints)
+        text-align: center
