@@ -15,3 +15,29 @@ input[type="submit"].btn
   &:active
     margin-bottom: 1px
     box-shadow: $base-shadow!important
+
+.card-btn
+  display: inline-block
+  width: 60px
+  height: 25px
+  line-height: 25px
+  border-radius: 2px
+  font-size: 12px
+  text-align: center
+  text-decoration: none
+  color: $white-color
+  &:hover
+    box-shadow: $base-shadow
+  &-primary
+    background-color: $primary-color
+  &-secondary
+    background-color: $secondary-color
+
+.link
+  color: $heading-color
+  font-style: italic
+  text-decoration: underline
+  transition: all 0.2s ease
+  font-weight: $base-bold-weight
+  &:hover
+    opacity: 0.9
