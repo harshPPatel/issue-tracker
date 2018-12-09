@@ -1,0 +1,27 @@
+#issueTable
+  width: 100%
+  tbody
+    width: 100%
+  tr
+    text-align: center
+    height: 40px
+    transition: all 0.2s ease
+    cursor: default
+    &:first-of-type
+      font-weight: $base-bold-weight
+      background-color: $teritary-color
+      color: $white-color
+
+    &:not(:first-of-type):hover
+      transform: scale(1.005)
+      box-shadow: $base-shadow
+      z-index: 22
+
+    &:nth-of-type(even)
+      background-color: $bg-color
+    td,
+    th
+      padding: 10px
+      &:nth-of-type(3)
+        max-width: 33.33%
+        width: 40%

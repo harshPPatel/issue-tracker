@@ -1,0 +1,55 @@
+#modalContainer
+  z-index: 9999999
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  overflow: hidden
+  +flex
+  justify-content: center
+  display: none
+  .overlay
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    z-index: 99
+    background-color: rgba($black-color, 0.6)
+    opacity: 1
+  .modal
+    z-index: 100
+    +flex
+    flex-direction: column
+    text-align: center
+    background: $white-color
+    width: 60vh
+    padding: 0 0 80px
+    box-shadow: $base-shadow
+    .modal-header
+      width: 100%
+      padding: 20px 30px
+      text-align: right
+      .cross-icon
+        max-height: 20px
+        height: 20px
+        a
+          transition: all 0.25s ease
+          opacity: 0.8
+          &:hover
+            opacity: 1
+        svg
+          height: 100%
+    .logo,
+    h2
+      margin-bottom: 1rem
+    .logo
+      max-height: 70px
+      height: 70px
+      svg
+        height: 100%
+    h2
+      color: $teritary-color
+    .kicker
+      opacity: 0.8
