@@ -1,6 +1,6 @@
 var modalOverlay =   document.querySelector('#modalContainer .overlay');
 var modalContainer = document.querySelector('#modalContainer');
-var modalCloseButton = document.querySelector('.modal-close-btn');
+var modalCloseElement = document.querySelectorAll('.--js-modal-close');
 var modalBody = document.querySelector('#modalContainer .modal');
 var body = document.body;
 
@@ -97,16 +97,12 @@ function modal() {
   }, 160);
 }
 
-modal();
-
-modalCloseButton.addEventListener('click', function(event) {
-  event.preventDefault();
-  modal();
+modalCloseElement.forEach(function(){
+  this.addEventListener('click', function(event) {
+    event.preventDefault();
+    modal();
+  });  
 });
-
-modalOverlay.addEventListener('click', function(event) {
-  event.preventDefault();
-  modal();
-})
+  
 
 // Use  : modal()
