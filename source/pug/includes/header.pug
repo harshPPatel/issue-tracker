@@ -5,13 +5,12 @@ header
       
       form#addIssueForm
         .form-group
-          label(for="issueDescriptionInput") Description
-          input#issueDescriptionInput.form-input(type="text" placeholder="Enter here...")
+          label.invalid-message(for="issueDescriptionInput") Description
+          input#issueDescriptionInput(type="text" placeholder="Enter here...")
         .form-group
-          label(for="issueSeverityInput") Severity
+          label.invalid-message#issueSeverityInputLabel(for="issueSeverityInput") Severity
           select#issueSeverityInput
-            option(value="hide") Select
-            option(value="low") Low
+            option(value="low" selected) Low
             option(value="medium") Medium 
             option(value="high") High 
         .form-group

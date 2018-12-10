@@ -27,6 +27,7 @@ header
         font-weight: $base-bold-weight
         color: $white-color
         margin-bottom: 10px
+        position: relative
       input,
       select
         width: 100%
@@ -48,3 +49,21 @@ header
         width: 33.33%
       &:nth-of-type(even)
         width: 16.67%
+
+.invalid
+  border: 1px solid $secondary-color!important
+  box-shadow: $base-shadow
+  position: relative
+  &::placeholder
+    color: $secondary-color!important
+.invalid-message
+  &::after
+    // color: $secondary-color!important
+    font-style: italic
+    font-size: 12px
+    letter-spacing: 1px
+    position: absolute
+    bottom: -65px
+    left: 10px
+    display: block
+    content: 'Required*'
