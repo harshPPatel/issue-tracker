@@ -3,18 +3,18 @@ header
     .container
       h2 Add New Issue
       
-      form#addIssueForm
+      form#addIssueForm(action="")
         .form-group
           label.invalid-message(for="issueDescriptionInput") Description
-          input#issueDescriptionInput(type="text" placeholder="Enter here...")
+          input#issueDescriptionInput(type="text" placeholder="Enter here..." name="description")
         .form-group
           label.invalid-message#issueSeverityInputLabel(for="issueSeverityInput") Severity
-          select#issueSeverityInput
+          select#issueSeverityInput(name="severity")
             option(value="low" selected) Low
             option(value="medium") Medium 
             option(value="high") High 
         .form-group
           label(for="issueAssignedToInput") Assigned To
-          input#issueAssignedToInput.form-input(type="text" placeholder="Enter here...")
+          input#issueAssignedToInput.form-input(type="text" placeholder="Enter here..." name="assignedTo")
         .form-group
-          input#issueSubmit.btn(role="button" type="submit" value="Add")
+          input#issueSubmit.btn(type="submit" value="Add")

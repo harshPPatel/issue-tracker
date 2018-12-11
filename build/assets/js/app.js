@@ -1,1 +1,187 @@
-var issueForm=document.getElementById("addIssueForm"),issueDescriptionInput=document.getElementById("issueDescriptionInput"),issueSeverityInput=document.getElementById("issueSeverityInput"),issueAssignedToInput=document.getElementById("issueAssignedToInput"),issueSubmitButton=document.getElementById("issueSubmit");function isIssueFormValid(){return""!=issueDescriptionInput.value&&"hide"!=issueSeverityInput.value}function addVaildStyling(){isIssueFormValid()?issueDescriptionInput.classList.remove("invalid"):issueDescriptionInput.classList.add("invalid")}function addIssue(e){e.preventDefault(),addVaildStyling()}issueDescriptionInput.addEventListener("click",function(){issueDescriptionInput.classList.remove("invalid")}),issueSubmitButton.addEventListener("click",addIssue),console.log(isIssueFormValid()),$("select").each(function(){var t=$(this),e=$(this).children("option").length;t.addClass("select-hidden"),t.wrap('<div class="select"></div>'),t.after('<div class="select-styled"></div>');var o=t.next("div.select-styled");o.text(t.children("option").eq(0).text());for(var n=$("<ul />",{class:"select-options"}).insertAfter(o),a=0;a<e;a++)$("<li />",{text:t.children("option").eq(a).text(),rel:t.children("option").eq(a).val()}).appendTo(n);var i=n.children("li");o.click(function(e){e.stopPropagation(),$("div.select-styled.active").not(this).each(function(){$(this).removeClass("active").next("ul.select-options").hide()}),$(this).toggleClass("active").next("ul.select-options").toggle()}),i.click(function(e){e.stopPropagation(),o.text($(this).text()).removeClass("active"),t.val($(this).attr("rel")),n.hide()}),$(document).click(function(){o.removeClass("active"),n.hide()})});var randomQuoteData,modalOverlay=document.querySelector("#modalContainer .overlay"),modalContainer=document.querySelector("#modalContainer"),modalCloseElement=document.querySelectorAll(".--js-modal-close"),modalBody=document.querySelector("#modalContainer .modal"),body=document.body;function isContainerOpen(){return"flex"==modalContainer.style.display}function setBodyOverflow(){isContainerOpen()?document.body.style.overflow="hidden":document.body.style.overflow="scroll"}function containerFunction(){isContainerOpen()?modalContainer.style.display="none":modalContainer.style.display="flex"}function modalOverlayStyle(){isContainerOpen()?(modalOverlay.animate([{opacity:"1"},{opacity:"0"}],500),modalOverlay.style.opacity="0"):(modalOverlay.animate([{opacity:"0"},{opacity:"1"}],500),modalOverlay.style.opacity="1")}function modalBodyStyle(){isContainerOpen()?(modalBody.animate([{opacity:"1",transform:"scale(1)"},{opacity:"0",transform:"scale(0.9)"}],200),modalBody.style.opacity="0",modalBody.style.transform="scale(0.9)"):(modalBody.animate([{opacity:"0",transform:"scale(0.9)"},{opacity:"1",transform:"scale(1)"}],{delay:100,duration:200}),modalBody.style.opacity="1",modalBody.style.transform="scale(1)")}function modal(){modalBodyStyle(),modalOverlayStyle(),setTimeout(function(){containerFunction()},150),setTimeout(function(){setBodyOverflow()},160)}modalCloseElement.forEach(function(){this.addEventListener("click",function(e){e.preventDefault(),modal()})});var quoteElement=document.getElementById("--js-random-quote"),authorElement=document.getElementById("--js-random-quote-author");function getJSONData(){var e=new XMLHttpRequest;e.onreadystatechange=function(){4==this.readyState&&200==this.status&&(randomQuoteData=JSON.parse(e.response),console.log(randomQuoteData))},e.open("GET","assets/json/quote.json",!0),e.send()}function getRandomQuote(){var e=Math.floor(Math.random()*randomQuoteData[0].quotes.length),t=randomQuoteData[0].quotes[e].quote,o=randomQuoteData[0].quotes[e].author;quoteElement.innerHTML=t,authorElement.innerHTML="- "+o}window.onload=function(){getJSONData(),setTimeout(getRandomQuote,50)};
+
+/*
+Reference: http://jsfiddle.net/BB3JK/47/
+*/
+
+$('select').each(function(){
+    var $this = $(this), numberOfOptions = $(this).children('option').length;
+
+    $this.addClass('select-hidden');
+    $this.wrap('<div class="select"></div>');
+    $this.after('<div class="select-styled"></div>');
+
+    var $styledSelect = $this.next('div.select-styled');
+    $styledSelect.text($this.children('option').eq(0).text());
+
+    var $list = $('<ul />', {
+        'class': 'select-options'
+    }).insertAfter($styledSelect);
+
+    for (var i = 0; i < numberOfOptions; i++) {
+        $('<li />', {
+            text: $this.children('option').eq(i).text(),
+            rel: $this.children('option').eq(i).val()
+        }).appendTo($list);
+    }
+
+    var $listItems = $list.children('li');
+
+    $styledSelect.click(function(e) {
+        e.stopPropagation();
+        $('div.select-styled.active').not(this).each(function(){
+            $(this).removeClass('active').next('ul.select-options').hide();
+        });
+        $(this).toggleClass('active').next('ul.select-options').toggle();
+    });
+
+    $listItems.click(function(e) {
+        e.stopPropagation();
+        $styledSelect.text($(this).text()).removeClass('active');
+        $this.val($(this).attr('rel'));
+        $list.hide();
+    });
+
+    $(document).click(function() {
+        $styledSelect.removeClass('active');
+        $list.hide();
+    });
+
+});
+
+var modalOverlay =   document.querySelector('#modalContainer .overlay');
+var modalContainer = document.querySelector('#modalContainer');
+var modalCloseElement = document.querySelectorAll('.--js-modal-close');
+var modalBody = document.querySelector('#modalContainer .modal');
+var body = document.body;
+
+
+function isContainerOpen(){
+  if (modalContainer.style.display == 'flex') {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function setBodyOverflow() {
+  if (isContainerOpen()) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'scroll';
+  }
+}
+
+function containerFunction() {
+  if (isContainerOpen()) {
+    modalContainer.style.display = "none";
+  } else {
+    modalContainer.style.display = "flex";
+  }
+}
+
+function modalOverlayStyle() {
+  if (isContainerOpen()) {
+    modalOverlay.animate([
+      {
+        opacity: '1'
+      },
+      {
+        opacity: '0'
+      }
+    ], 500);
+    modalOverlay.style.opacity = '0';
+  } else {
+    modalOverlay.animate([
+      {
+        opacity: '0'
+      },
+      {
+        opacity: '1'
+      }
+    ], 500);
+    modalOverlay.style.opacity = '1';
+  }
+}
+
+function modalBodyStyle() {
+  if (isContainerOpen()) {
+    modalBody.animate([
+      {
+        opacity: '1',
+        transform: 'scale(1)'
+      },
+      {
+        opacity: '0',
+        transform: 'scale(0.9)'
+      }
+    ], 200);
+    modalBody.style.opacity = '0';
+    modalBody.style.transform = 'scale(0.9)';
+  } else {
+    modalBody.animate([
+      {
+        opacity: '0',
+        transform: 'scale(0.9)'
+      },
+      {
+        opacity: '1',
+        transform: 'scale(1)'
+      }
+    ], {
+      delay: 100,
+      duration: 200
+    });
+    modalBody.style.opacity = '1';
+    modalBody.style.transform = 'scale(1)';
+  }
+}
+
+function modal() {
+  modalBodyStyle();
+  modalOverlayStyle();
+  setTimeout(function() {
+    containerFunction();
+  }, 150);
+  setTimeout(function() {
+    setBodyOverflow();
+  }, 160);
+}
+
+modalCloseElement.forEach(function(){
+  this.addEventListener('click', function(event) {
+    event.preventDefault();
+    modal();
+  });  
+});
+  
+
+// Use  : modal()
+
+var randomQuoteData;
+var quoteElement = document.getElementById('--js-random-quote');
+var authorElement = document.getElementById('--js-random-quote-author');
+
+function getJSONData() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     randomQuoteData = JSON.parse(xhttp.response);
+    }
+  };
+  xhttp.open("GET", 'assets/json/quote.json', true);
+  xhttp.send();
+}
+
+function getRandomQuote() {
+  var randomNumber = Math.floor(Math.random() * randomQuoteData[0].quotes.length);
+  var quote = randomQuoteData[0].quotes[randomNumber].quote;
+  var author = randomQuoteData[0].quotes[randomNumber].author;
+
+  quoteElement.innerHTML = quote;
+  authorElement.innerHTML = '- ' + author;
+}
+
+window.onload = function() {
+  getJSONData();
+  setTimeout(getRandomQuote, 50);
+}

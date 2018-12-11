@@ -84,7 +84,7 @@ task('appJS', function(cb) {
       src(jsMainSource),
       plumber(),
       concat('app.js'),
-      uglify(),
+      // uglify(),
       dest(jsDestination)
     ],
     cb
