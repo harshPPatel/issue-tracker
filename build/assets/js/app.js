@@ -1,53 +1,135 @@
+var issueDescriptionInput = document.getElementById("issueDescriptionInput"); 
+var issueSeverityInput    = document.getElementById("issueSeverityInput"); 
+var issueAssignedToInput  = document.getElementById("issueAssignedToInput");
+var issueSubmitButton     = document.getElementById("issueSubmit");
+var issueOutputElement    = document.getElementById("issueListOutput");
+var issueSortInput = document.getElementById('sortIssueList');
 
-/*
-Reference: http://jsfiddle.net/BB3JK/47/
-*/
+var defaultEmployees =  [ 'Bruce',
+                          'Snyder',
+                          'Taylor',
+                          'Mark',
+                          'Monica',
+                          'Sachin',
+                          'Richard',
+                          'Parker',
+                          'Zach',
+                          'Mike'
+                        ];
 
-$('select').each(function(){
-    var $this = $(this), numberOfOptions = $(this).children('option').length;
+// Basic Functions
+issueDescriptionInput.addEventListener('click', function() {
+  issueDescriptionInput.classList.remove('invalid');
+})
 
-    $this.addClass('select-hidden');
-    $this.wrap('<div class="select"></div>');
-    $this.after('<div class="select-styled"></div>');
+// Handler Bar Function
+function createIssueCard(issue) {
+  var rawTemplate = document.getElementById("issueCardTemplate").innerHTML;
+  var compiledTemplate = Handlebars.compile(rawTemplate);
+  return compiledTemplate(issue);
+}
 
-    var $styledSelect = $this.next('div.select-styled');
-    $styledSelect.text($this.children('option').eq(0).text());
+function fetchIssues() {
+  var issues = JSON.parse(localStorage.getItem('issues'));
 
-    var $list = $('<ul />', {
-        'class': 'select-options'
-    }).insertAfter($styledSelect);
+  if(issues === null || issues.length == 0) {
+    issueOutputElement.innerHTML =  "<div class=\"welcome-message\">" + 
+                                      "<h3>Yeah! No Issues Found!</h3>" +
+                                    "</div>";
+  } else if (issueSortInput.value == 'ascending') {
+    sortAscending('severity');
+    
+  } else {
+    issueOutputElement.innerHTML = "";
+    issues
+      .reverse()
+      .forEach(function(issue) {
+        issueOutputElement.innerHTML += createIssueCard(issue);
+      });
+  }
+}
 
-    for (var i = 0; i < numberOfOptions; i++) {
-        $('<li />', {
-            text: $this.children('option').eq(i).text(),
-            rel: $this.children('option').eq(i).val()
-        }).appendTo($list);
+function autoAssign() {
+  var randomNumber = Math.floor(Math.random() * defaultEmployees.length);
+  return defaultEmployees[randomNumber];
+}
+
+function addIssue(event) {
+  event.preventDefault();
+  if (issueDescriptionInput.value == '') {
+    issueDescriptionInput.classList.add('invalid');
+    return;
+  }
+
+  var issueDescription = issueDescriptionInput.value;
+  var issueAssignedTo = issueAssignedToInput.value;
+  var issueSeverity = issueSeverityInput.value;
+  var id = chance.guid();
+  var issueStatus = "Open";
+
+  issueAssignedTo = issueAssignedTo == '' ? autoAssign() : issueAssignedTo;
+
+  var issue = {
+    id: id,
+    description: issueDescription,
+    severity: issueSeverity,
+    assignedTo: issueAssignedTo,
+    status: issueStatus
+  };
+
+  if (localStorage.getItem('issues') === null) {
+    var issues = new Array();
+    issues.push(issue);
+    localStorage.setItem('issues', JSON.stringify(issues));
+  } else {
+    var issues = JSON.parse(localStorage.getItem('issues'));
+    issues.push(issue);
+    localStorage.setItem('issues', JSON.stringify(issues));
+  }
+
+  issueDescriptionInput.value = '';
+  issueAssignedToInput.value = '';
+  issueSeverityInput.value = 'low';
+
+  fetchIssues();
+}
+
+function setStatusClosed(id) {
+  var issues = JSON.parse(localStorage.getItem('issues'));
+  issues.forEach(function(issue) {
+    if (issue.id == id) {
+      issue.status = 'Closed';
     }
+  });
+  localStorage.setItem('issues', JSON.stringify(issues));
+  fetchIssues();
+}
 
-    var $listItems = $list.children('li');
+function deleteIssue(id) {
+  var issues = JSON.parse(localStorage.getItem('issues'));
+  issues.forEach(function(issue, index) {
+    if(issue.id == id) {
+      issues.splice(index, 1);
+    }
+  });
+  localStorage.setItem('issues', JSON.stringify(issues));
+  fetchIssues();
+  // setting default value in sort options
+  if(JSON.parse(localStorage.getItem('issues')).length == 0) {
+    issueSortInput.value = 'hide';
+  }
+}
 
-    $styledSelect.click(function(e) {
-        e.stopPropagation();
-        $('div.select-styled.active').not(this).each(function(){
-            $(this).removeClass('active').next('ul.select-options').hide();
-        });
-        $(this).toggleClass('active').next('ul.select-options').toggle();
-    });
+issueSubmitButton.addEventListener('click', addIssue);
 
-    $listItems.click(function(e) {
-        e.stopPropagation();
-        $styledSelect.text($(this).text()).removeClass('active');
-        $this.val($(this).attr('rel'));
-        $list.hide();
-    });
-
-    $(document).click(function() {
-        $styledSelect.removeClass('active');
-        $list.hide();
-    });
-
+issueSortInput.addEventListener('input', function() {  
+  if (this.value == 'ascending') {
+    sortAscending('severity');
+  }
+  if (this.value == 'descending') {
+    sortDescending('severity');
+  }
 });
-
 var modalOverlay =   document.querySelector('#modalContainer .overlay');
 var modalContainer = document.querySelector('#modalContainer');
 var modalCloseElement = document.querySelectorAll('.--js-modal-close');
@@ -184,4 +266,57 @@ function getRandomQuote() {
 window.onload = function() {
   getJSONData();
   setTimeout(getRandomQuote, 50);
+}
+function sortAscending(option) {
+  var sortedArray = [];
+  var sortedIssues = new Array();
+  var issues = JSON.parse(localStorage.getItem('issues'));
+  issueOutputElement.innerHTML = '';
+
+  switch (option) {
+    case 'severity':
+      issues.forEach(function(issue) {
+        if (issue.severity == 'low') {
+          issueOutputElement.innerHTML += createIssueCard(issue);
+        }
+      });
+      issues.forEach(function(issue) {
+        if (issue.severity == 'medium') {
+          issueOutputElement.innerHTML += createIssueCard(issue);
+        }
+      });
+      issues.forEach(function(issue) {
+        if (issue.severity == 'high') {
+          issueOutputElement.innerHTML += createIssueCard(issue);
+        }
+      });
+      break;
+  }
+}
+
+function sortDescending(option) {
+  var sortedArray = [];
+  var sortedIssues = new Array();
+  var issues = JSON.parse(localStorage.getItem('issues'));
+  issueOutputElement.innerHTML = '';
+
+  switch (option) {
+    case 'severity':
+    issues.forEach(function(issue) {
+      if (issue.severity == 'high') {
+        issueOutputElement.innerHTML += createIssueCard(issue);
+      }
+    });
+    issues.forEach(function(issue) {
+      if (issue.severity == 'medium') {
+        issueOutputElement.innerHTML += createIssueCard(issue);
+      }
+    });
+    issues.forEach(function(issue) {
+      if (issue.severity == 'low') {
+        issueOutputElement.innerHTML += createIssueCard(issue);
+      }
+    });
+      break;
+  }
 }
