@@ -3,7 +3,7 @@ const issueSeverityInput    =   document.getElementById("issueSeverityInput");
 const issueAssignedToInput  =   document.getElementById("issueAssignedToInput");
 const issueSubmitButton     =   document.getElementById("issueSubmit");
 const issueOutputElement    =   document.getElementById("issueListOutput");
-const issueSortInput        =   document.getElementById('sortIssueList');
+const issueSortInput        =   document.getElementById("sortIssueList");
 const defaultEmployees      =   [ 'Bruce',
                                   'Snyder',
                                   'Taylor',
@@ -16,11 +16,9 @@ const defaultEmployees      =   [ 'Bruce',
                                   'Mike'
                                 ];
 
-issueDescriptionInput
-  .addEventListener('click', 
-    function() {
-      issueDescriptionInput.classList.remove('invalid');
-  });
+issueDescriptionInput.addEventListener('click', function() {
+  issueDescriptionInput.classList.remove('invalid');
+});
 
 function createIssueCard(issue) {
   var rawTemplate       =   document.getElementById("issueCardTemplate").innerHTML;
@@ -35,19 +33,19 @@ function autoAssign() {
 
 function addIssue(event) {
   event.preventDefault();
-  if (issueDescriptionInput.value == '') {
+  if (issueDescriptionInput.value === '') {
     issueDescriptionInput.classList.add('invalid');
     return;
   }
 
-  var issueDescription = issueDescriptionInput.value;
-  var issueAssignedTo = issueAssignedToInput.value;
-  var issueSeverity = issueSeverityInput.value;
-  var id = chance.guid();
-  var issueStatus = ISSUE_OPEN;
+  var issueDescription  =   issueDescriptionInput.value;
+  var issueAssignedTo   =   issueAssignedToInput.value;
+  var issueSeverity     =   issueSeverityInput.value;
+  var id                =   chance.guid();
+  var issueStatus       =   ISSUE_OPEN;
 
-  issueAssignedTo = issueAssignedTo == '' ? autoAssign() : issueAssignedTo;
-  issueSeverity = issueSeverity == '' ? 'low' : issueSeverity;
+  issueAssignedTo   =   issueAssignedTo == '' ? autoAssign() : issueAssignedTo;
+  issueSeverity     =   issueSeverity == '' ? 'low' : issueSeverity;
 
   var issue = {
     id: id,
@@ -57,7 +55,7 @@ function addIssue(event) {
     status: issueStatus
   };
 
-  if (getData() === null) {
+  if ( getData() === null ) {
     var issues = new Array();
     issues.push(issue);
     setJSONData(issues);
@@ -100,11 +98,6 @@ function deleteIssue(id) {
   }
 }
 
-issueSubmitButton.addEventListener('click', addIssue);
-
-// check in both pages
-// Chnage the function in to individual function and then call it according to page
-// severity sort function will be same , add argument in function which will take options for id assignedTo aand severity
 issueSortInput.addEventListener('input', function() {  
   if (issueSortInput.value == ASCENDING) {
     sortAscending(SEVERITY, INDEX_PAGE);
@@ -134,6 +127,8 @@ function fetchIssuesCard() {
       });
   }
 }
+
+issueSubmitButton.addEventListener('click', addIssue);
 var modalOverlay =   document.querySelector('#modalContainer .overlay');
 var modalContainer = document.querySelector('#modalContainer');
 var modalCloseElement = document.querySelectorAll('.--js-modal-close');
@@ -243,33 +238,36 @@ modalCloseElement.forEach(function(element) {
 
 // Use  : modal()
 
+const JSON_SOURCE   =   'assets/json/quote.json';
+const quoteElement  =   document.getElementById('--js-random-quote');
+const authorElement =   document.getElementById('--js-random-quote-author');
 var randomQuoteData;
-var quoteElement = document.getElementById('--js-random-quote');
-var authorElement = document.getElementById('--js-random-quote-author');
 
+// fetching Quote JSOn Data from the server
 function fetchJSONData() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-     randomQuoteData = JSON.parse(xhttp.response);
+      randomQuoteData = JSON.parse(xhttp.response);
     }
   };
-  xhttp.open("GET", 'assets/json/quote.json', true);
+  xhttp.open("GET", JSON_SOURCE, true);
   xhttp.send();
 }
 
+// getting random quote
 function getRandomQuote() {
-  var randomNumber = Math.floor(Math.random() * randomQuoteData[0].quotes.length);
+  var randomNumber = Math.floor( Math.random() * randomQuoteData[0].quotes.length );
   var quote = randomQuoteData[0].quotes[randomNumber].quote;
   var author = randomQuoteData[0].quotes[randomNumber].author;
-
   quoteElement.innerHTML = quote;
   authorElement.innerHTML = '- ' + author;
 }
 
+// running functions onload
 window.onload = function() {
   fetchJSONData();
-  setTimeout(getRandomQuote, 50);
+  setTimeout(getRandomQuote, 10);
 }
 const searchInput = document.getElementById("searchInput");
 const searchOptionInput = document.getElementById("searchOptionInput");

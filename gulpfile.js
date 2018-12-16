@@ -161,7 +161,7 @@ task('watch', function(cb) {
     'build/*.html',
     'build/assets/css/*.css',
     'build/assets/js/*.js',
-    '.build/assets/img/*',
+    'build/assets/img/*',
     'build/assets/favicon/*',
     'build/assets/json/*.json'
   ]).on('change', browserSync.reload);

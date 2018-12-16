@@ -1,4 +1,3 @@
-console.log("Hello World");
 const issueTable                  = document.querySelector('#issueTable tbody');
 const issueSortInputById          = document.getElementById('sortIssueListById');
 const issueSortInputBySeverity    = document.getElementById('sortIssueListBySeverity');
