@@ -22,7 +22,9 @@ var pugSource       = 'source/pug/*.pug',
     jsMainSource    = 'source/js/*.js',
     imageSource     = 'source/img/*',
     faviconSource   = 'source/favicon/*',
-    jsonSource      = 'source/json/*.json';
+    jsonSource      = 'source/json/*.json',
+    indexPageJsSource     = 'source/js/indexPage/*.js',
+    printPageJsSource     = 'source/js/printPage/*.js';
 
 var htmlDestination     = 'build/',
     cssDestination      = 'build/assets/css/',
@@ -91,6 +93,30 @@ task('appJS', function(cb) {
   );
 })
 
+task('indexPageJS', function(cb) {
+  pump([
+      src(indexPageJsSource),
+      plumber(),
+      concat('index.js'),
+      // uglify(),
+      dest(jsDestination)
+    ],
+    cb
+  );
+})
+
+task('printPageJS', function(cb) {
+  pump([
+      src(printPageJsSource),
+      plumber(),
+      concat('printPage.js'),
+      // uglify(),
+      dest(jsDestination)
+    ],
+    cb
+  );
+})
+
 task('image', function(cb) {
   return src(imageSource)
     .pipe(imagemin())
@@ -126,6 +152,8 @@ task('watch', function(cb) {
   watch(jsCrossPlatformSource, task('crossPlatformJS'));
   watch(jsVendorSource, task('vendorJS'));
   watch(jsMainSource, task('appJS'));
+  watch(indexPageJsSource, task('indexPageJS'));
+  watch(printPageJsSource, task('printPageJS'));
   watch(imageSource, task('image'));
   watch(faviconSource, task('favicon'));
   watch(jsonSource, task('json'));
@@ -145,6 +173,8 @@ exports.default = parallel( task('html'),
                             task('crossPlatformJS'),
                             task('vendorJS'),
                             task('appJS'),
+                            task('indexPageJS'),
+                            task('printPageJS'),
                             task('image'),
                             task('favicon'),
                             task('json'),

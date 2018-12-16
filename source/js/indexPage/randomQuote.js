@@ -2,7 +2,7 @@ var randomQuoteData;
 var quoteElement = document.getElementById('--js-random-quote');
 var authorElement = document.getElementById('--js-random-quote-author');
 
-function getJSONData() {
+function fetchJSONData() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -23,6 +23,6 @@ function getRandomQuote() {
 }
 
 window.onload = function() {
-  getJSONData();
+  fetchJSONData();
   setTimeout(getRandomQuote, 50);
 }

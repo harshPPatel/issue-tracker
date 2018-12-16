@@ -97,11 +97,11 @@ function modal() {
   }, 160);
 }
 
-modalCloseElement.forEach(function(){
-  this.addEventListener('click', function(event) {
+modalCloseElement.forEach(function(element) {
+  element.addEventListener('click', function(event) {
     event.preventDefault();
     modal();
-  });  
+  });
 });
   
 

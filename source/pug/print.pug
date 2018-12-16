@@ -2,11 +2,16 @@ doctype html
 html(lang='en')
   head
     include includes/head.pug
+    title Issue Tracker | Print
     
   body
     
     include includes/pages/print/header.pug
     include includes/pages/print/listSection.pug
     
+    include includes/helpers/issue-list-print-page-template.pug
+    include includes/pages/print/script.html
+    
     script(src='assets/js/vendors.js')
     script(src='assets/js/app.js')
+    script(src='assets/js/printPage.js')
