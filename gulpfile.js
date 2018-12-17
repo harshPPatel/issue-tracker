@@ -5,7 +5,6 @@ var { parallel,
       watch }     = require('gulp'),
     htmlmin       = require('gulp-htmlmin'),
     cleanCSS      = require('gulp-clean-css'),
-    uglify        = require('gulp-uglify'),
     pump          = require('pump'),
     concat        = require('gulp-concat'),
     sass          = require('gulp-sass'),
@@ -86,7 +85,6 @@ task('appJS', function(cb) {
       src(jsMainSource),
       plumber(),
       concat('app.js'),
-      // uglify(),
       dest(jsDestination)
     ],
     cb
@@ -98,7 +96,6 @@ task('indexPageJS', function(cb) {
       src(indexPageJsSource),
       plumber(),
       concat('index.js'),
-      // uglify(),
       dest(jsDestination)
     ],
     cb
@@ -110,7 +107,6 @@ task('printPageJS', function(cb) {
       src(printPageJsSource),
       plumber(),
       concat('printPage.js'),
-      // uglify(),
       dest(jsDestination)
     ],
     cb
