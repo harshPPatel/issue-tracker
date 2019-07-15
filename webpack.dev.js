@@ -6,7 +6,7 @@ const common = require('./webpack.common');
 
 const pages = fs
   .readdirSync(path.resolve(__dirname, 'src'))
-  .filter((fileName) => fileName.endsWith('.pug'));
+  .filter((fileName) => fileName.endsWith('.html'));
 
 module.exports = merge(common, {
   devServer: {
@@ -21,7 +21,7 @@ module.exports = merge(common, {
   plugins: [
     ...pages.map((page) => new HtmlWebpackPlugin({
       template: `./src/${page}`,
-      filename: `${page.split('.')[0]}.html`,
+      filename: page,
     })),
   ],
 
@@ -36,11 +36,6 @@ module.exports = merge(common, {
         ],
       },
       {
-        test: /\.pug$/,
-        exclude: /node_modules/,
-        use: ['pug-loader'],
-      },
-      {
         test: /\.(svg|png|gif|jpg|jpeg)$/i,
         exclude: /node_modules/,
         use: {
@@ -48,6 +43,17 @@ module.exports = merge(common, {
           options: {
             name: '[name].[ext]',
             outputPath: 'assets/img',
+          },
+        },
+      },
+      {
+        test: /\.json$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'assets/json',
           },
         },
       },

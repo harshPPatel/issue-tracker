@@ -1,3 +1,5 @@
+const CopyPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   entry: {
     'vendors-ie': './src/vendor-ie.js',
@@ -5,15 +7,33 @@ module.exports = {
     main: './src/index.js',
   },
   devtool: 'source-maps',
+  plugins: [
+    new CopyPlugin([{
+      from: './src/favicon',
+      to: './'
+    }, ]),
+  ],
   module: {
     rules: [{
-      test: /\.html$/,
-      use: [{
-        loader: 'html-loader',
-        options: {
-          attrs: ['img:src', 'link:href', 'source:src'],
+        test: /\.html$/,
+        use: [{
+          loader: 'html-loader',
+          options: {
+            attrs: ['img:src', 'link:href', 'source:src'],
+            interpolate: true,
+          },
+        }, ],
+      },
+      {
+        test: /\.(ico|webmanifest)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: '.',
+          },
         },
-      }, ],
-    }, ],
+      }
+    ],
   },
 };

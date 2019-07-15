@@ -13,7 +13,7 @@ const common = require('./webpack.common');
 
 const pages = fs
   .readdirSync(path.resolve(__dirname, 'src'))
-  .filter((fileName) => fileName.endsWith('.pug'));
+  .filter((fileName) => fileName.endsWith('.html'));
 
 module.exports = merge(common, {
   mode: 'production',
@@ -37,7 +37,7 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(),
     ...pages.map((page) => new HtmlWebpackPlugin({
       template: `./src/${page}`,
-      filename: `${page.split('.')[0]}.html`,
+      filename: page,
       minify: {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
@@ -57,10 +57,6 @@ module.exports = merge(common, {
           'postcss-loader',
           'sass-loader',
         ],
-      },
-      {
-        test: /\.pug$/,
-        use: ['pug-loader'],
       },
       {
         enforce: 'pre',
@@ -103,6 +99,17 @@ module.exports = merge(common, {
             },
           },
         ],
+      },
+      {
+        test: /\.json$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'assets/json',
+          },
+        },
       },
       {
         test: /\.(woff|woff2|eot|ttf)$/i,
