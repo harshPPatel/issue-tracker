@@ -1,17 +1,25 @@
 doctype html
 html(lang='en')
   head
+    //- Head
     include includes/head.pug
     title Issue Tracker | Print
     
   body
     
+    //- Header
     include includes/pages/print/header.pug
+
+    //- List Section
     include includes/pages/print/listSection.pug
     
+    //- Print Page Template
     include includes/helpers/issue-list-print-page-template.pug
-    include includes/pages/print/script.html
     
-    script(src='assets/js/vendors.js')
-    script(src='assets/js/app.js')
-    script(src='assets/js/printPage.js')
+    //- Vendor JavaScript Files
+    <!--[if IE 8]>
+      <script src="./vendor.js"></script>
+    <![endif]-->
+
+    //- JavaScript Files
+    script(src='./index.js')

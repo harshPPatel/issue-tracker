@@ -20,9 +20,13 @@ html(lang='en')
     //- Modal 
     include includes/helpers/modal.pug
     
-    //- Helpers 
+    //- Issue Card Template 
     include includes/helpers/issueCard-template.pug
     
+    //- Vendor JavaScript Files
+    <!--[if IE 8]>
+      <script src="./vendor.js"></script>
+    <![endif]-->
+
     //- JavaScript Files
-    script(src='./vendor.js')
     script(src='./index.js')
