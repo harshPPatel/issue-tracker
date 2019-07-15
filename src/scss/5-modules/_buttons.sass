@@ -1,0 +1,43 @@
+input[type="submit"].btn
+  background-color: $secondary-color!important
+  font-family: $base-font
+  font-weight: $base-bold-weight
+  font-size: 1rem
+  color: $white-color
+  box-shadow: $base-shadow
+  transition: all 1s ease
+
+  &:hover
+    margin-bottom: 2px
+    transform: scale(1.01)
+    box-shadow: $dark-shadow
+
+  &:active
+    margin-bottom: 1px
+    box-shadow: $base-shadow!important
+
+.card-btn
+  display: inline-block
+  width: 60px
+  height: 25px
+  line-height: 25px
+  border-radius: 2px
+  font-size: 12px
+  text-align: center
+  text-decoration: none
+  color: $white-color
+  &:hover
+    box-shadow: $base-shadow
+  &-primary
+    background-color: $primary-color
+  &-secondary
+    background-color: $secondary-color
+
+.link-btn
+  color: $heading-color
+  font-style: italic
+  text-decoration: underline
+  transition: all 0.2s ease
+  font-weight: $base-bold-weight
+  &:hover
+    opacity: 0.9

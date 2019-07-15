@@ -1,5 +1,5 @@
 import './js/app';
-import './scss/main.scss';
+import './scss/main.sass';
 // import './json/users.json';
 import './video/header-bg.mp4';
 
