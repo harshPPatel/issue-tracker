@@ -1,0 +1,20 @@
+@import './fonts';
+
+body {
+  background-color: #fff;
+  color: blue;
+  font-family: 'Muli', sans-serif;
+  background: url('./../img/img.jpg') center center no-repeat;
+
+  h1 {
+    font-size: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      color: red;
+      box-shadow: 1px 2px 3px rgba(black, 0.5);
+    }
+  }
+}

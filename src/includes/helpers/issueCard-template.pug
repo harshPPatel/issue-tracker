@@ -1,0 +1,10 @@
+script#issueCardTemplate(type="text/x-handlebars-template")
+  .row
+    .issue
+      p.issue_id <span>Issue Id :</span> {{id}}
+      p.issue_status {{status}}
+      h3.issue_heading {{description}}
+      p.issue_severity <span>Severity :</span> {{severity}}
+      p.issue_assigned <span>Assigned To :</span> {{assignedTo}}
+      a.card-btn.card-btn-primary(href="#" onclick="setStatusClosed('{{id}}')") Close
+      a.card-btn.card-btn-secondary(href="#" onclick="deleteIssue('{{id}}')") Delete

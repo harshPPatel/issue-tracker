@@ -1,0 +1,25 @@
+section#listSection.printPageListSection
+  .container
+    .row#formRow
+      form#printPageSortForm
+        .form-group
+          label(for="sortIssueList") Sort By ID : 
+          select#sortIssueListById
+            option(value="hide") Select
+            option(value="ascending") Ascending 
+            option(value="descending") Descending 
+        .form-group
+          label(for="sortIssueList") Sort By Severity : 
+          select#sortIssueListBySeverity
+            option(value="hide") Select
+            option(value="ascending") Ascending 
+            option(value="descending") Descending 
+        .form-group
+          label(for="sortIssueList") Sort By Assigned To : 
+          select#sortIssueListByAssigned
+            option(value="hide") Select
+            option(value="ascending") Ascending 
+            option(value="descending") Descending 
+    .row#issueListOutput
+      table#issueTable
+        tbody

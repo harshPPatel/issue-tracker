@@ -1,0 +1,22 @@
+section#listSection
+  .container
+    .row
+      .link
+        a.link-btn(href="print.html" target="_blank" role="button" onclick="fetchIssuesRow()") Click For Issues List Only
+      form#sortForm
+        .form-group
+          label(for="sortIssueList") Sort By Severity : 
+          select#sortIssueList
+            option(value="hide") Select
+            option(value="ascending") Ascending 
+            option(value="descending") Descending 
+    #issueListOutput
+      .row
+        .welcome-message
+          .content
+            h1 Welcome !
+            h3 Yeah! No Issues Found!
+            .quote
+              p.heading Today's Quote
+              p.quote#--js-random-quote 
+              p.author#--js-random-quote-author
