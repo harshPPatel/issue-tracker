@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "airbnb"
-  ],
+  "extends": ["airbnb"],
   "rules": {
     "linebreak-style": "off",
     "no-undef": "error",
@@ -20,6 +18,9 @@
     "comma-dangle": "off",
     "comma-spacing": "off",
     "arrow-body-style": "off",
+    "no-else-return": "off",
+    "brace-style": "warn",
+    "prefer-destructuring": "off"
   },
   "env": {
     "browser": true,

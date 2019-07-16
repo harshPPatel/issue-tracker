@@ -1,5 +1,2 @@
-import {
-  getJSONData
-} from './data';
-
-console.log(getJSONData());
+import './modal';
+import './quote';

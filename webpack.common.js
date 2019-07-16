@@ -8,21 +8,30 @@ module.exports = {
   },
   devtool: 'source-maps',
   plugins: [
-    new CopyPlugin([{
-      from: './src/favicon',
-      to: './'
-    }, ]),
+    new CopyPlugin([
+      {
+        from: './src/favicon',
+        to: './',
+      },
+      {
+        from: './src/json',
+        to: './json',
+      },
+    ]),
   ],
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.html$/,
-        use: [{
-          loader: 'html-loader',
-          options: {
-            attrs: ['img:src', 'link:href', 'source:src'],
-            interpolate: true,
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              attrs: ['img:src', 'link:href', 'source:src'],
+              interpolate: true,
+            },
           },
-        }, ],
+        ],
       },
       {
         test: /\.json$/,
@@ -44,7 +53,7 @@ module.exports = {
             outputPath: '.',
           },
         },
-      }
+      },
     ],
   },
 };
