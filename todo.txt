@@ -1,1 +1,2 @@
 [ ] Add favicon
+[ ] check dependencies in package.json (specially pug one!) and remove un neccessary

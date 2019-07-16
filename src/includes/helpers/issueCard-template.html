@@ -1,0 +1,10 @@
+<script id="issueCardTemplate" type="text/x-handlebars-template">
+  <div class="row">
+      <div class="issue">
+          <p class="issue_id"><span>Issue Id :</span> {{id}}</p>
+          <p class="issue_status">{{status}}</p>
+          <h3 class="issue_heading">{{description}}</h3>
+          <p class="issue_severity"><span>Severity :</span> {{severity}}</p>
+          <p class="issue_assigned"><span>Assigned To :</span> {{assignedTo}}</p><a class="card-btn card-btn-primary" href="#" onclick="setStatusClosed('{{id}}')">Close</a><a class="card-btn card-btn-secondary" href="#" onclick="deleteIssue('{{id}}')">Delete</a></div>
+  </div>
+</script>

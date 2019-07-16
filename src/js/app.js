@@ -1,5 +1,5 @@
-console.log('Hello Worl!');
+import {
+  getJSONData
+} from './data';
 
-const text = f => console.log(`Hello from Advance JS ${f}`);
-
-text('Hello');
+console.log(getJSONData());

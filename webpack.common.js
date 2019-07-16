@@ -25,6 +25,17 @@ module.exports = {
         }, ],
       },
       {
+        test: /\.json$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'assets/json',
+          },
+        },
+      },
+      {
         test: /\.(ico|webmanifest)$/,
         use: {
           loader: 'file-loader',

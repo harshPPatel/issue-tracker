@@ -47,17 +47,6 @@ module.exports = merge(common, {
         },
       },
       {
-        test: /\.json$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'assets/json',
-          },
-        },
-      },
-      {
         test: /\.(woff|woff2|eot|ttf)$/i,
         exclude: /node_modules/,
         use: {
