@@ -3,12 +3,21 @@
     position: relative
     +flex
     justify-content: space-between
+    @media (max-width: 589px)
+      flex-direction: column
+      justify-content: flex-end
+      align-items: flex-end
+      .link
+        height: auto!important
     .link
       height: 30px
     form#sortForm
       position: absolute
       right: 0
       margin-left: auto
+      @media (max-width: 589px)
+        position: static
+        margin-top: 1rem
       label
         font-weight: $base-bold-weight
         margin-right: 1rem
@@ -16,6 +25,10 @@
         +flex
   #issueListOutput
     padding-top: 100px
+    @media (max-width: 589px)
+      padding-top: 40px
+      .issue
+        margin-bottom: 30px!important
     .issue
       margin-bottom: 50px
 
@@ -28,6 +41,8 @@
   h3
     color: rgba($primary-color, 0.6)
     margin-bottom: 30px
+    @media (max-width: 589px)
+      margin-bottom: 1rem
   .quote
     width: 75%
     margin: 0 auto
