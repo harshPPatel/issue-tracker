@@ -1,2 +1,4 @@
 [ ] Add favicon
+[ ] responsive
 [ ] check dependencies in package.json (specially pug one!) and remove un neccessary
+[ ] document code

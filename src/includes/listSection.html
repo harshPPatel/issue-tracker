@@ -1,14 +1,20 @@
 <section id="listSection">
   <div class="container">
     <div class="row">
-      <div class="link"><a class="link-btn" href="print.html" target="_blank" role="button"
-          onclick="fetchIssuesRow()">Click For Issues List Only</a></div>
+      <div class="link">
+        <a class="link-btn" href="print.html" target="_blank" role="button"
+          >Click For Issues List Only</a
+        >
+      </div>
       <form id="sortForm">
-        <div class="form-group"><label for="sortIssueList">Sort By Severity : </label><select id="sortIssueList">
+        <div class="form-group">
+          <label for="sortIssueList">Sort By Severity : </label
+          ><select data-by="severity" id="sortIssueList">
             <option value="hide">Select</option>
             <option value="ascending">Ascending </option>
             <option value="descending">Descending </option>
-          </select></div>
+          </select>
+        </div>
       </form>
     </div>
     <div id="issueListOutput">
@@ -19,7 +25,7 @@
             <h3>Yeah! No Issues Found!</h3>
             <div class="quote">
               <p class="heading">Today's Quote</p>
-              <p class="quote" id="--js-random-quote"> </p>
+              <p class="quote" id="--js-random-quote"></p>
               <p class="author" id="--js-random-quote-author"></p>
             </div>
           </div>

@@ -1,5 +1,33 @@
 <section class="printPageListSection" id="listSection">
   <div class="container">
+    <div class="row" id="formRow">
+      <form id="printPageSortForm">
+        <div class="form-group">
+          <label for="sortIssueListById">Sort By ID : </label>
+          <select data-by="id" id="sortIssueListById">
+            <option value="hide">Select</option>
+            <option value="ascending">Ascending </option>
+            <option value="descending">Descending </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="sortIssueListBySeverity">Sort By Severity : </label>
+          <select data-by="severity" id="sortIssueListBySeverity">
+            <option value="hide">Select</option>
+            <option value="ascending">Ascending </option>
+            <option value="descending">Descending </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="sortIssueListByAssigned">Sort By Assigned To : </label>
+          <select data-by="assignedTo" id="sortIssueListByAssigned">
+            <option value="hide">Select</option>
+            <option value="ascending">Ascending </option>
+            <option value="descending">Descending </option>
+          </select>
+        </div>
+      </form>
+    </div>
     <div class="row">
       <table id="issueTable">
         <tbody id="issueListOutput"></tbody>

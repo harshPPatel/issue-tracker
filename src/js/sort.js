@@ -1,13 +1,11 @@
 import { getJSONIssues } from './data';
 import { ISSUE_FIELDS, SORT_OPTIONS } from './constants';
 
-const issueSortInput = document.getElementById('sortIssueList');
-
-const sortAscending = option => {
+const sortAscending = input => {
   let sortedArray = [];
   const issues = getJSONIssues();
 
-  switch (option) {
+  switch (input.dataset.by) {
     case ISSUE_FIELDS.ID:
       sortedArray = issues.sort((a, b) => {
         return a.id > b.id ? 1 : -1;
@@ -30,11 +28,11 @@ const sortAscending = option => {
   return sortedArray;
 };
 
-const sortDescending = option => {
+const sortDescending = input => {
   let sortedArray = [];
   const issues = getJSONIssues();
 
-  switch (option) {
+  switch (input.dataset.by) {
     case ISSUE_FIELDS.ID:
       sortedArray = issues.sort((a, b) => {
         return a.id < b.id ? 1 : -1;
@@ -57,11 +55,11 @@ const sortDescending = option => {
   return sortedArray;
 };
 
-const sort = option => {
-  if (issueSortInput.value === SORT_OPTIONS.ASCENDING) {
-    return sortAscending(option);
+const sort = input => {
+  if (input.value === SORT_OPTIONS.ASCENDING) {
+    return sortAscending(input);
   } else {
-    return sortDescending(option);
+    return sortDescending(input);
   }
 };
 

@@ -11,9 +11,10 @@ export const issueCard = issue => {
       <p class="issue_assigned">
         <span>Assigned To :</span> ${issue.assignedTo}
       </p>
-      <a class="card-btn card-btn-primary --js-issue-status" data-id="${
-        issue.id
-      }" href="#" >Close</a>
+      <a class="card-btn card-btn-${
+        issue.status === 'open' ? 'primary' : 'success'
+      } --js-issue-status" data-id="${issue.id}" href="#" >
+        ${issue.status === 'open' ? 'Close' : 'Open'}</a>
       <a class="card-btn card-btn-secondary --js-issue-delete" href="#" data-id="${
         issue.id
       }">Delete</a>

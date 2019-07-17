@@ -1,5 +1,5 @@
 import { ISSUE_FIELDS } from './constants';
-import { getJSONData as getJSONIssues } from './data';
+import { getJSONIssues } from './data';
 import modal from './modal';
 import { issueCard } from './template';
 
@@ -20,7 +20,7 @@ const isIssueExists = (option, issue) => {
 const searchWithOption = option => {
   const issues = getJSONIssues();
 
-  if (issues || issues[0].quotes.length === 0) {
+  if (!issues) {
     modal();
     searchInput.blur();
     searchInput.value = '';
