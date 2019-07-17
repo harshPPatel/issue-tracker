@@ -1,5 +1,5 @@
 import { ISSUE_FIELDS } from './constants';
-import { getJSONData } from './data';
+import { getJSONData as getJSONIssues } from './data';
 import modal from './modal';
 import { issueCard } from './template';
 
@@ -18,7 +18,7 @@ const isIssueExists = (option, issue) => {
 };
 
 const searchWithOption = option => {
-  const issues = getJSONData();
+  const issues = getJSONIssues();
 
   if (issues || issues[0].quotes.length === 0) {
     modal();

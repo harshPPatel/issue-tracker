@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    ${require('./includes/head.html')}
+    <title>Issue Tracker</title>
+  </head>
 
-<head>
-  ${require('./includes/head.html')}
-  <title>Issue Tracker</title>
-</head>
+  <body id="index">
+    <!-- Nav -->
+    ${require('./includes/nav.html')}
 
-<body>
+    <!-- Header -->
+    ${require('./includes/header.html')}
 
-  <!-- Nav -->
-  ${require('./includes/nav.html')}
+    <!-- List Section -->
+    ${require('./includes/listSection.html')}
 
-  <!-- Header -->
-  ${require('./includes/header.html')}
+    <!-- Modal -->
+    ${require('./includes/helpers/modal.html')}
 
-  <!-- List Section -->
-  ${require('./includes/listSection.html')}
+    <!-- Issue Card Template -->
+    ${require('./includes/helpers/issueCard-template.html')}
 
-  <!-- Modal -->
-  ${require('./includes/helpers/modal.html')}
-
-  <!-- Issue Card Template -->
-  ${require('./includes/helpers/issueCard-template.html')}
-
-  <!--[if IE 8]>
-    <script src="./vendor-ie.js"></script>
-  <![endif]-->
-
-</body>
-
+    <!--[if IE 8]>
+      <script src="./vendor-ie.js"></script>
+    <![endif]-->
+  </body>
 </html>

@@ -1,21 +1,43 @@
 <header>
-    <div class="overlay">
-        <div class="container">
-            <h2>Add New Issue</h2>
-            <form id="addIssueForm" action="">
-                <div class="form-group"><label class="invalid-message"
-                        for="issueDescriptionInput">Description</label><input id="issueDescriptionInput" type="text"
-                        placeholder="Enter here..." name="description" /></div>
-                <div class="form-group"><label class="invalid-message" for="issueSeverityInput">Severity</label><select
-                        id="issueSeverityInput" name="severity">
-                        <option value="low" selected="selected">Low</option>
-                        <option value="medium">Medium </option>
-                        <option value="high">High </option>
-                    </select></div>
-                <div class="form-group"><label for="issueAssignedToInput">Assigned To</label><input class="form-input"
-                        id="issueAssignedToInput" type="text" placeholder="Enter here..." name="assignedTo" /></div>
-                <div class="form-group"><input class="btn" id="issueSubmit" type="submit" value="Add" /></div>
-            </form>
+  <div class="overlay">
+    <div class="container">
+      <h2>Add New Issue</h2>
+      <form id="addIssueForm" action="">
+        <div class="form-group">
+          <label class="invalid-message" for="issueDescriptionInput"
+            >Description</label
+          >
+          <input
+            id="issueDescriptionInput"
+            type="text"
+            placeholder="Enter here..."
+            name="description"
+            autofocus
+          />
         </div>
+        <div class="form-group">
+          <label class="invalid-message" for="issueSeverityInput"
+            >Severity</label
+          ><select id="issueSeverityInput" name="severity">
+            <option value="low" selected="selected">Low</option>
+            <option value="medium">Medium </option>
+            <option value="high">High </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="issueAssignedToInput">Assigned To</label
+          ><input
+            class="form-input"
+            id="issueAssignedToInput"
+            type="text"
+            placeholder="Enter here..."
+            name="assignedTo"
+          />
+        </div>
+        <div class="form-group">
+          <input class="btn" id="issueSubmit" type="submit" value="Add" />
+        </div>
+      </form>
     </div>
+  </div>
 </header>

@@ -11,16 +11,44 @@ export const issueCard = issue => {
       <p class="issue_assigned">
         <span>Assigned To :</span> ${issue.assignedTo}
       </p>
-      <a class="card-btn card-btn-primary" href="#" onclick="setStatusClosed('${
+      <a class="card-btn card-btn-primary --js-issue-status" data-id="${
         issue.id
-      }')">Close</a>
-      <a class="card-btn card-btn-secondary" href="#" onclick="deleteIssue('${
+      }" href="#" >Close</a>
+      <a class="card-btn card-btn-secondary --js-issue-delete" href="#" data-id="${
         issue.id
-      }')">Delete</a>
+      }">Delete</a>
     </div>
   </div>`;
 };
 
+export const issueTableHeadingRow = issue => {
+  return `
+    <tr>
+      <td> ID </td>
+      <td> Status </td>
+      <td> Description </td>
+      <td> Severity </td>
+      <td> Assigned To </td>
+    </tr>
+  `;
+};
+
 export const issueTableRow = issue => {
-  return 'Hello Row';
+  return `
+    <tr>
+      <td>${issue.id}</td>
+      <td>${issue.status}</td>
+      <td>${issue.description}</td>
+      <td>${issue.severity}</td>
+      <td>${issue.assignedTo}</td>
+    </tr>
+  `;
+};
+
+export const noIssueMessage = () => {
+  return `
+    <div class="welcome-message">
+      <h3>Yeah! No Issues Found!</h3>
+    </div>
+  `;
 };

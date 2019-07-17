@@ -1,14 +1,14 @@
 const IDENTIFIER = 'issues';
 
-module.exports.getJSONData = () => {
+module.exports.getJSONIssues = () => {
   return JSON.parse(localStorage.getItem(IDENTIFIER));
 };
 
-module.exports.getData = () => {
+module.exports.getIssues = () => {
   return localStorage.getItem(IDENTIFIER);
 };
 
-module.exports.setJSONData = data => {
+module.exports.setIssues = data => {
   localStorage.setItem('issues', JSON.stringify(data));
 };
 
