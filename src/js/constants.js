@@ -1,33 +1,33 @@
-module.exports.SORT_OPTIONS = {
-	ASCENDING: 'ascending',
-	DESCENDING: 'descending',
+export const SORT_OPTIONS = {
+  ASCENDING: 'ascending',
+  DESCENDING: 'descending',
 };
 
-module.exports.ISSUE_STATUS = {
-	OPEN: 'open',
-	CLOSE: 'close',
+export const ISSUE_STATUS = {
+  OPEN: 'open',
+  CLOSE: 'close',
 };
 
-module.exports.PAGE = {
-	INDEX: 'index',
-	PRINT: 'print',
+export const PAGE = {
+  INDEX: 'index',
+  PRINT: 'print',
 };
 
-module.exports.ISSUE_FIELDS = {
-	ID: 'id',
-	SEVERITY: 'severity',
-	ASSIGNED_TO: 'assignedTo',
+export const ISSUE_FIELDS = {
+  ID: 'id',
+  SEVERITY: 'severity',
+  ASSIGNED_TO: 'assignedTo',
 };
 
-module.exports.EMPLOYEES = [
-	'Bruce',
-	'Snyder',
-	'Taylor',
-	'Mark',
-	'Monica',
-	'Sachin',
-	'Richard',
-	'Parker',
-	'Zach',
-	'Mike',
+export const EMPLOYEES = [
+  'Bruce',
+  'Snyder',
+  'Taylor',
+  'Mark',
+  'Monica',
+  'Sachin',
+  'Richard',
+  'Parker',
+  'Zach',
+  'Mike',
 ];

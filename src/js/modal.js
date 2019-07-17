@@ -124,3 +124,5 @@ modalCloseElement.forEach(element => {
     modal();
   });
 });
+
+export default modal;

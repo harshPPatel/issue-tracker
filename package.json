@@ -55,6 +55,7 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
+    "chance": "^1.0.18",
     "html5shiv": "^3.7.3",
     "selectivizr": "^1.0.3",
     "webpack-merge": "^4.2.1"

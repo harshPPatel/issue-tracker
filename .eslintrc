@@ -20,7 +20,9 @@
     "arrow-body-style": "off",
     "no-else-return": "off",
     "brace-style": "warn",
-    "prefer-destructuring": "off"
+    "prefer-destructuring": "off",
+    "no-plusplus": "off",
+    "operator-linebreak": "off"
   },
   "env": {
     "browser": true,
