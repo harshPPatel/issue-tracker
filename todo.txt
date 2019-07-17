@@ -1,4 +1,4 @@
-[ ] Add favicon
+[x] Add favicon
+[x] check dependencies in package.json (specially pug one!) and remove un neccessary
 [ ] responsive
-[ ] check dependencies in package.json (specially pug one!) and remove un neccessary
-[ ] document code
+[ ] document ALL TYPE code
