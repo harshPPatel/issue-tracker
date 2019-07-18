@@ -9,6 +9,7 @@ const modalBody = document.querySelector('#modalContainer .modal');
  * @returns {Boolean} True if modal container is open. False otherwise.
  */
 const isModalContainerOpen = () => {
+  // Checking Modal container's display property
   if (modalContainer.style.display === 'flex') {
     return true;
   } else {
@@ -23,14 +24,24 @@ const isModalContainerOpen = () => {
  * it sets it to 'scroll'.
  */
 const setBodyOverflow = () => {
+  // Checking if the modal container is open or not
   if (isModalContainerOpen()) {
+    // Adding 'noscroll' class to body
     document.body.classList.add('noscroll');
   } else {
+    // Removing 'noscroll' class to body
     document.body.classList.remove('noscroll');
   }
 };
 
+/**
+ * @function toggleContainer
+ * @description Checks if the container is open and changes container style.
+ * If the container is open, it change its display style to none, and
+ * if the container is closed, then changes display style to flex.
+ */
 const toggleContainer = () => {
+  // Checking  if the container is open or not.
   if (isModalContainerOpen()) {
     modalContainer.style.display = 'none';
   } else {
@@ -38,8 +49,15 @@ const toggleContainer = () => {
   }
 };
 
+/**
+ * @function toggleModalOverlay
+ * @description Checks if the modal container is open or not. Then shows the modal's
+ * overlay with animation.
+ */
 const toggleModalOverlay = () => {
+  // Checking if the container is open or not
   if (isModalContainerOpen()) {
+    // Closing modalOverlay with animation
     modalOverlay.animate(
       [
         {
@@ -53,6 +71,7 @@ const toggleModalOverlay = () => {
     );
     modalOverlay.style.opacity = '0';
   } else {
+    // showing modal overlay with animation
     modalOverlay.animate(
       [
         {
@@ -68,8 +87,16 @@ const toggleModalOverlay = () => {
   }
 };
 
+/**
+ * @function toggleModalBody
+ * @description Checks if the container is open and changes modal body style.
+ * If the container is close, it closes the modal from the screen with animation.
+ * If the container is open, then it shows the modal to the screen with animation.
+ */
 const toggleModalBody = () => {
+  // Checking if the container is open or not
   if (isModalContainerOpen()) {
+    // Removing modal body with animation
     modalBody.animate(
       [
         {
@@ -86,6 +113,7 @@ const toggleModalBody = () => {
     modalBody.style.opacity = '0';
     modalBody.style.transform = 'scale(0.9)';
   } else {
+    // Showing modal body with animation
     modalBody.animate(
       [
         {
@@ -107,17 +135,29 @@ const toggleModalBody = () => {
   }
 };
 
+/**
+ * @function modal
+ * @description Calls all modal related functions step by step.
+ */
 const modal = () => {
+  // Toggling modal body
   toggleModalBody();
+
+  // Toggling modal overlay
   toggleModalOverlay();
+
+  // Toggling the container
   setTimeout(() => {
     toggleContainer();
   }, 150);
+
+  // Setting body overflow
   setTimeout(() => {
     setBodyOverflow();
   }, 160);
 };
 
+// Adding click event listeners to all modalCloseElements.
 modalCloseElement.forEach(element => {
   element.addEventListener('click', e => {
     e.preventDefault();
@@ -125,4 +165,5 @@ modalCloseElement.forEach(element => {
   });
 });
 
+// Exporting modal as default
 export default modal;

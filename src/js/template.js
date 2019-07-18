@@ -1,3 +1,19 @@
+/**
+ * @typedef {Object} Issue
+ * @property {string} id - Unique ID of the issue.
+ * @property {string} description - The description of the issue.
+ * @property {string} severity - The severity level of the issue.
+ * @property {string} assignedTo - The name of the employee to whom teh issue is assigned to.
+ * @property {string} status - The status of the issue.
+ */
+
+/**
+ * @function issueCard
+ * @description It gets issue as parameter and creates string value of isseCard and adds
+ * issue's value to the card's html elements
+ * @param {Issue} issue Issue to create its issue Card
+ * @returns {String} issueCard in string format with issue object's properties' values
+ */
 export const issueCard = issue => {
   return `
   <div class="row">
@@ -22,7 +38,12 @@ export const issueCard = issue => {
   </div>`;
 };
 
-export const issueTableHeadingRow = issue => {
+/**
+ * @function issueTableHeadingRow
+ * @description Returns heading row for print page's issue table in string format.
+ * @returns {String} issueTableHeadingRow in string format
+ */
+export const issueTableHeadingRow = () => {
   return `
     <tr>
       <td> ID </td>
@@ -34,6 +55,13 @@ export const issueTableHeadingRow = issue => {
   `;
 };
 
+/**
+ * @function issueTableRow
+ * @description It gets issue as parameter and creates string value of issueTableRow
+ * and adds issue's value to the row's html elements
+ * @param {Issue} issue Issue to create its issue row
+ * @returns {String} issueTableRow in string format with issue object's properties' values
+ */
 export const issueTableRow = issue => {
   return `
     <tr>
@@ -46,6 +74,11 @@ export const issueTableRow = issue => {
   `;
 };
 
+/**
+ * @function noIssueMessage
+ * @description Returns message of 'No Issues Found' in string format
+ * @returns {String} 'No Issue Found' message wrapped in div as a string format
+ */
 export const noIssueMessage = () => {
   return `
     <div class="welcome-message">
