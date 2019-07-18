@@ -26,8 +26,8 @@ nav
     cursor: pointer
     height: 40px
     +flex
-    @media (max-width: 425px)
-      display: none
+    // @media (max-width: 425px)
+    //   display: none
     .logo
       height: 40px
       width: 40px
@@ -60,6 +60,8 @@ nav
       font-size: 12px
       width: 150px
       margin: 0 1rem
+      @media (max-width: 375px)
+        width: 100px
       &:focus
         box-shadow: $base-shadow
         outline: none

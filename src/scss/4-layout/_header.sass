@@ -60,6 +60,8 @@ header
         color: $white-color
         margin-bottom: 10px
         position: relative
+        @media (max-width: 425px)
+          margin-bottom: 5px
       input,
       select
         width: 100%
@@ -71,6 +73,10 @@ header
         font-size: 12px
         background-color: rgba($white-color, 0.8)
         transition: all 0.2s ease
+        @media (max-width: 425px)
+          &:not([type="submit"])
+            height: 25px
+            padding: 8px
         &:focus
           box-shadow: $dark-shadow
           background-color: $white-color

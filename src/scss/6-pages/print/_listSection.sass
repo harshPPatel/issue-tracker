@@ -4,9 +4,21 @@
     +flex
     justify-content: space-between
     margin-bottom: 2rem
+    @media (max-width: 1012px)
+      flex-wrap: wrap
+      justify-content: flex-end
     .form-group
       +flex
       width: 30%
+      @media (max-width: 1152px)
+        width: 40%
+      @media (max-width: 1012px)
+        width: 50%
+        margin-top: 1rem
+        justify-content: flex-end
+      @media (max-width: 668px)
+        width: 100%
+
     label
       font-weight: $base-bold-weight
       margin-right: 1rem
