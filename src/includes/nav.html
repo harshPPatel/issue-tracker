@@ -1,0 +1,21 @@
+<nav>
+  <div class="container">
+    <div class="brand">
+      <div class="logo">
+        <!-- Logo -->
+        ${require('./icons/logo.html')}
+      </div>
+      <p>Issue Tracker</p>
+    </div>
+    <!-- Search Form -->
+    <form id="searchForm">
+      <label for="searchInput">Search :</label>
+      <input id="searchInput" type="text" placeholder="Search here..." />
+      <select id="searchOptionInput">
+        <option value="hide">Select</option>
+        <option value="id">ID</option>
+        <option value="assignedTo">Assigned To</option>
+      </select>
+    </form>
+  </div>
+</nav>

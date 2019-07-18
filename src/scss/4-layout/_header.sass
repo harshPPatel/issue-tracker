@@ -1,0 +1,112 @@
+header
+  height: 50vh
+  background: url($hero-bg) center center no-repeat
+  background-size: cover
+  background-attachment: scroll
+  background-attachment: fixed
+  @media (max-width: 668px)
+    height: auto
+    margin-top: $navbar-height!important
+  @media (max-width: 425px)
+    margin-top: 60px!important
+  .overlay
+    background: linear-gradient(to right, rgba($primary-color, 0.9), rgba($primary-dark-color, 0.9))
+    height: 100%
+    width: 100%
+    +flex
+  h2
+    color: $white-color
+    margin-bottom: 40px
+    @media (max-width: 668px)
+      text-align: center
+      margin-bottom: 0
+      margin-top: 20px
+    @media (max-width: 425px)
+      text-align: center
+      margin-bottom: 0
+      margin-top: 10px
+
+  form#addIssueForm
+    width: 100%
+    +flex
+    align-items: flex-end
+    justify-content: space-between
+    @media (max-width: 668px)
+      flex-direction: column
+      align-items: center
+      width: 80%
+      margin: 0 auto
+      margin-bottom: 50px
+      .form-group
+        width: 100%!important
+    @media (max-width: 589px)
+      width: 90%
+    @media (max-width: 425px)
+      margin-top: 10px
+      margin-bottom: 30px
+    .form-group
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      padding: 0.5rem
+      height: 100%
+      @media (max-width: 425px)
+        padding: 0.3rem 0
+        &:last-of-type
+          margin-top: 1rem
+      label
+        font-family: $base-font
+        font-weight: $base-bold-weight
+        color: $white-color
+        margin-bottom: 10px
+        position: relative
+        @media (max-width: 425px)
+          margin-bottom: 5px
+      input,
+      select
+        width: 100%
+      input
+        height: 30px
+        border: none
+        outline: none
+        padding: 10px
+        font-size: 12px
+        background-color: rgba($white-color, 0.8)
+        transition: all 0.2s ease
+        @media (max-width: 425px)
+          &:not([type="submit"])
+            height: 25px
+            padding: 8px
+        &:focus
+          box-shadow: $dark-shadow
+          background-color: $white-color
+        &::placeholder
+          color: $heading-color
+
+      &:nth-of-type(odd)
+        width: 33.33%
+      &:nth-of-type(even)
+        width: 16.67%
+
+.invalid
+  border: 1px solid $secondary-color!important
+  box-shadow: $base-shadow
+  position: relative
+  &::placeholder
+    color: $secondary-color!important
+.invalid-message
+  &::after
+    font-style: italic
+    font-size: 12px
+    letter-spacing: 1px
+    position: absolute
+    bottom: -65px
+    left: 10px
+    display: block
+    content: 'Required*'
+    @media (max-width: 668px)
+      top: auto
+      bottom: 2px
+      left: auto
+      right: -5rem
+      content: '- Required*'

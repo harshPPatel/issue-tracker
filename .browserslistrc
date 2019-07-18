@@ -1,0 +1,5 @@
+# using seperate file so all other lints can see browsers list of the project
+
+# Supported browsers
+
+cover 99.5%

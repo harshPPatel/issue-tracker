@@ -1,0 +1,33 @@
+{
+  "extends": ["airbnb"],
+  "rules": {
+    "linebreak-style": "off",
+    "no-undef": "error",
+    "arrow-parens": "off",
+    "eol-last": "off",
+    "no-multiple-empty-lines": "warn",
+    "indent": "off",
+    "no-trailing-spaces": "off",
+    "no-unused-vars": "warn",
+    "import/no-extraneous-dependencies": "off",
+    "global-require": "off",
+    "quotes": "warn",
+    "no-multi-spaces": "off",
+    "object-curly-newline": "off",
+    "object-curly-spacing": "off",
+    "comma-dangle": "off",
+    "comma-spacing": "off",
+    "arrow-body-style": "off",
+    "no-else-return": "off",
+    "brace-style": "warn",
+    "prefer-destructuring": "off",
+    "no-plusplus": "off",
+    "operator-linebreak": "off",
+    "padded-blocks": "off",
+    "no-case-declarations": "off"
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  }
+}

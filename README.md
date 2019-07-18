@@ -1,7 +1,3 @@
-# issue-tracker
+# starter-kit
 
-Dropdown Styling Inspiration from this link
-
-- https://codepen.io/wallaceerick/pen/ctsCz
-
-Quotes taken from : https://www.lottoland.ie/magazine/motivational-quotes-by-famous-people.html
+A starter kit for projects. Tasks are managed by webpack
