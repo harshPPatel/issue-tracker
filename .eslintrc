@@ -24,7 +24,9 @@
     "no-plusplus": "off",
     "operator-linebreak": "off",
     "padded-blocks": "off",
-    "no-case-declarations": "off"
+    "no-case-declarations": "off",
+    "no-use-before-define": "warn",
+    "no-param-reassign": "warn"
   },
   "env": {
     "browser": true,

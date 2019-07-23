@@ -7,5 +7,5 @@
       "use": "@now/static-build"
     }
   ],
-  "alias": ["issue-tracker.now.sh"]
+  "alias": ["issuetracker.now.sh"]
 }
