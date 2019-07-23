@@ -1,3 +1,6 @@
+// Polyfill
+import '@babel/polyfill';
+
 // Main JS
 import './js/app';
 
